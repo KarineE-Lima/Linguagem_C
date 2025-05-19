@@ -43,9 +43,9 @@ int main(){
 	
 	if(dig0 == 1){
 		dig0 = 0;
-	} else if (dig0 == 0 && dig1 == 0 && dig2 == 0 && dig3 == 0){
+	} /*else if (dig0 == 0 && dig1 == 0 && dig2 == 0 && dig3 == 0){
 		dig0 == 0;
-	}
+	}*/
 	else if (dig0 == 0){
 		dig0 = -1;
 	} else {
