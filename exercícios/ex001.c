@@ -1,14 +1,11 @@
 #include <stdio.h>
 #include <locale.h>
 
-void main(){
+int main(){
 	
 	setlocale(LC_ALL, "Portuguese");
 	
-	float base;
-	float altura;
-	float area;
-	float perimetro;
+	float base, altura, area, perimetro;
 	
 	printf("Informe o tamanho da base do retângulo: ");
 	scanf("%f", &base);
@@ -19,4 +16,5 @@ void main(){
 	perimetro = 2*(base + altura);
 	
 	printf("A area do retângulo é %.2f e o seu perimetro é %.2f.", area, perimetro);
+	return 0;
 }
