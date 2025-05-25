@@ -14,54 +14,35 @@ int main(){
 	
 	if(cent == 0){
 		printf("");
+	} else if (cent == 1 && num % 100 == 0){
+		printf("Cem");
 	} else {
 		switch (cent){
-		case 1: (num % 100 != 0) ? printf("Cento e ") : printf("Cem");
+		case 1: printf("Cento");
 			break;
-		case 2: (num % 100 != 0) ? printf("duzentos e ") : printf("duzentos");
+		case 2: printf("duzentos");
 			break;
-		case 3:  (num % 100 != 0) ? printf("trezentos e ") : printf("trezentos");
+		case 3: printf("trezentos");
 			break;
-		case 4: (num % 100 != 0) ? printf("quatrocentos e ") : printf("quatrocentos");
+		case 4: printf("quatrocentos");
 			break;
-		case 5: (num % 100 != 0) ? printf("quinhentos e ") : printf("quinhentos");
+		case 5: printf("quinhentos");
 			break;
-		case 6: (num % 100 != 0) ? printf("seiscentos e ") : printf("seiscentos");
+		case 6: printf("seiscentos");
 			break;
-		case 7: (num % 100 != 0) ? printf("setecentos e ") : printf("setecentos");
+		case 7: printf("setecentos");
 			break;
-		case 8: (num % 100 != 0) ? printf("oitocentos e ") : printf("oitocentos");
+		case 8: printf("oitocentos");
 			break;
-		case 9: (num % 100 != 0) ? printf("novecentos e ") : printf("novecentos");
+		case 9: printf("novecentos");
 			break;
 		}
 	}
+	if (num % 100 != 0 && dez != 0){
+		printf(" e ");
+	}
 	if (dez == 0){
 		printf("");
-		if (un == 0){
-			printf("");
-		} else {
-			switch(un){
-				case 1: printf("um");
-					break;
-				case 2: printf("dois");
-					break;
-				case 3: printf("três");
-					break;
-				case 4: printf("quatro");
-					break;
-				case 5: printf("cinco");
-					break;
-				case 6: printf("seis");
-					break;
-				case 7: printf("sete");
-					break;
-				case 8: printf("oito");
-					break;
-				case 9: printf("nove");
-					break;		
-			}
-		}
 	} else if(dez == 1 && num % 10 != 0){
 		switch(un){
 			case 1: printf("onze");
@@ -87,46 +68,50 @@ int main(){
 		switch(dez){
 			case 1: printf("dez");
 				break;
-			case 2: (num % 10 != 0) ? printf("vinte e ") : printf("vinte ");
+			case 2: printf("vinte");
 				break;
-			case 3: (num % 10 != 0) ? printf("trinta e ") : printf("trinta");
+			case 3: printf("trinta");
 				break;
-			case 4: (num % 10 != 0) ? printf("quarenta e ") : printf("quarenta ");
+			case 4: printf("quarenta");
 				break;
-			case 5: (num % 10 != 0) ? printf("cinquenta e ") : printf("cinquenta ");
+			case 5: printf("cinquenta");
 				break;
-			case 6: (num % 10 != 0) ? printf("sessenta e ") : printf("sessenta ");
+			case 6: printf("sessenta");
 				break;
-			case 7: (num % 10 != 0) ? printf("setenta e ") : printf("setenta ");
+			case 7: printf("setenta");
 				break;
-			case 8: (num % 10 != 0) ? printf("oitenta e ") : printf("oitenta ");
+			case 8: printf("oitenta");
 				break;
-			case 9: (num % 10 != 0) ? printf("noventa e ") : printf("noventa ");
+			case 9: printf("noventa");
 				break;		
 		}
-		if (un == 0){
+	}
+	if(dez != 1 && num % 10 != 0){
+		printf(" e ");
+	}
+	
+	if (un == 0 || dez == 1){
 			printf("");
-		} else {
-			switch(un){
-				case 1: printf("um");
-					break;
-				case 2: printf("dois");
-					break;
-				case 3: printf("três");
-					break;
-				case 4: printf("quatro");
-					break;
-				case 5: printf("cinco");
-					break;
-				case 6: printf("seis");
-					break;
-				case 7: printf("sete");
-					break;
-				case 8: printf("oito");
-					break;
-				case 9: printf("nove");
-					break;		
-			}
+	} else {
+		switch(un){
+			case 1: printf("um");
+				break;
+			case 2: printf("dois");
+				break;
+			case 3: printf("três");
+				break;
+			case 4: printf("quatro");
+				break;
+			case 5: printf("cinco");
+				break;
+			case 6: printf("seis");
+				break;
+			case 7: printf("sete");
+				break;
+			case 8: printf("oito");
+				break;
+			case 9: printf("nove");
+				break;		
 		}
 	}
 	return 0;
