@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <locale.h>
-
+/* um programa que leia um valor e imprima todas as possíveis combinações em 
+que o lançamento de um par de dados tenha como resultado da soma dos valores dos 
+dados o número lido. */
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	
