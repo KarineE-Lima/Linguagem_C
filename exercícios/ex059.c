@@ -2,9 +2,9 @@
 
 int main(){
 	int divisor, divisoes, primo1, primo2, numpar;
-	int div2, mult;
+	int div2, mult, busca;
 	for (numpar = 500; numpar <= 1000; numpar += 2){
-		for(primo1 = 2; primo1 <= numpar; primo1++){
+		for(primo1 = 2, busca = 1; primo1 <= numpar && busca == 1; primo1++){
 			divisoes = 0;
 			for(divisor = 1; divisor <= primo1; divisor++){
 				divisoes += (primo1 % divisor == 0)? 1 : 0;
@@ -17,7 +17,7 @@ int main(){
 				}
 				if (div2 == 2){
 					printf("%d = %d + %d\n", numpar, primo1, primo2);
-					break;
+					busca = 0;
 				}
 			}
 		}
