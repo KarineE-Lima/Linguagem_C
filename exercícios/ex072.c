@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <locale.h>
-#define TAM_VET 20
+#define TAM_VET 10
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	int valores[TAM_VET];
-	int indice, prox, ant, inter, tam;
+	int indice, inter, cont;
 	int moda, repeticoes[TAM_VET], i, maior;
 	float media = 0, mediana;
 	for(indice = 0; indice < TAM_VET; indice++){
@@ -31,11 +31,11 @@ int main(){
 	
 	//mediana
 	for(indice = 0; indice < TAM_VET; indice++){
-		for (ant = 0, prox = 1; prox < TAM_VET; prox++, ant++){
-			if(valores[ant] > valores[prox]){
-				inter = valores[ant];
-				valores[ant] = valores[prox];
-				valores[prox] = inter;
+		for (cont = indice + 1; cont < TAM_VET; cont++){
+			if(valores[indice] > valores[cont]){
+				inter = valores[indice];
+				valores[indice] = valores[cont];
+				valores[cont] = inter;
 			}
 		}
 	}
