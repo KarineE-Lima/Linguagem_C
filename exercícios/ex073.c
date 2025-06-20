@@ -10,7 +10,6 @@ int main(){
 	printf("Array atual = [ ");
 	for(indice = 0; indice < TAM_MAX && vetor[indice] != 0; indice++){
 		printf("%d ", vetor[indice]);
-		tamAtual++;
 	}
 	printf("]\n");
 	
