@@ -6,38 +6,31 @@ int main(){
 	setlocale(LC_ALL, "Portuguese");
 	
 	int valores[TAM_VETOR];
-	int indice, posicao, valorBuscado, busca = 1; 
-	int meio, inicio;
+	int indice, inicio, meio, fim, posicao, valorBusc, busca = 0;
+	
+	posicao= -1;
+	inicio = 0; 
+	fim = TAM_VETOR;
 	
 	for(indice = 0; indice < TAM_VETOR; indice++){
-		printf("Insira o valor da posição %d do vetor: ", indice);
+		printf("Insira o valor da posição %d: ", indice);
 		scanf("%d", &valores[indice]);
-	}
-	printf("Insira o valor que quer buscar: ");
-	scanf("%d", &valorBuscado);
-	meio = TAM_VETOR / 2;
+	} 
+	printf("Insira o valor a ser buscado: ");
+	scanf("%d", &valorBusc);
 	
-	for(indice = 0; indice < TAM_VETOR && busca == 1; indice++){
-		if (valorBuscado >= valores[meio]){
-			if (valorBuscado == valores[meio]){
-				posicao = meio;
-				busca = 0;
-			} else {
-				posicao = -1;
-			}
-			inicio = meio;
-			meio = (inicio + TAM_VETOR) / 2;
-		} else if (valorBuscado < valores[meio]){
-			meio /= 2;
-			if (valorBuscado == valores[meio]){
-				posicao = meio;
-				busca = 0;
-			} else {
-				posicao = -1;
-			}
+	while(inicio < fim && posicao < 0){
+		meio = (fim - inicio) / 2 + inicio;
+		if(valores[meio] == valorBusc){
+			posicao = meio;
+		} else if(valores[meio] > valorBusc){
+			fim = meio - 1;
+		} else {
+			inicio = meio + 1;
 		}
+		busca++;
 	}
-	printf("O valor buscado está na posição %d", posicao);
+	printf("Posição : %d\nBuscas feitas: %d", posicao, busca);
 	
 	return 0;
 }
