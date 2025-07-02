@@ -6,27 +6,25 @@ int main(){
 	setlocale(LC_ALL, "Portuguese");
 	
 	int vendas[TAM_MAX];
-	int indice, parar, tamAtual = 0, soma = 0;
+	int indice = 0, valor = 0,tamAtual, total;
 	
-	for(indice = 0, parar = 0; indice < TAM_MAX && parar == 0; indice++){
+	while(valor >= 0){
 		printf("Insira o número da sequência: ");
-		scanf("%d", &vendas[indice]);
-		tamAtual++;
-		if(vendas[indice] == 0){
-			tamAtual -= 2;
-			vendas[indice - 1] = 0;
-			indice = tamAtual - 1;
-		}
-		if(vendas[indice] == -1){
+		scanf("%d", &valor);
+		
+		if(valor > 0){
+			vendas[indice] = valor;
+			indice++;
+		}else if(valor == 0){
+			indice--;
 			vendas[indice] = 0;
-			tamAtual--;
-			parar = 1;
 		}
 	}
-	for(indice = 0; indice < tamAtual; indice++)
-		soma+= vendas[indice];
+	tamAtual = indice;
+	for(indice = 0, total = 0; indice < tamAtual; indice++)
+		total += vendas[indice];
 	
-	printf("\nO total de vendas é %d", soma);
+	printf("\nO total de vendas é %d", total);
 	
 	return 0;
 }
