@@ -17,13 +17,7 @@ int main(){
 		for(divisor = 1; divisor <= numero; divisor++)
 			divisoes += (numero % divisor == 0) ? 1 : 0;
 		if(divisoes == 2){
-			if (numero > 524287) {
-				pridig = numero / 1000;
-				segdig = numero % 1000;
-				printf("%d = %d%d\n", expoente, pridig, segdig);
-			} else {
-				printf("%d = %d\n", expoente, numero);
-			}
+			printf("%d = %d\n", expoente, numero);
 			indice++;
 		}
 		expoente++;
