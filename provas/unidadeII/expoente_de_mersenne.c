@@ -6,7 +6,7 @@ int main(){
 	setlocale(LC_ALL, "Portuguese");
 	
 	int expoente = 1, numero, indice = 0, contador, divisor, divisoes;
-	int pridig, segdig;
+	
 	
 	while(indice < QTD_EXP){
 		numero = 2;
