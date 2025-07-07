@@ -4,23 +4,40 @@
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
-	int numero, qtd_seq, indice, cont;
+	int qtd_seq, tamanho_orig, novo_tamanho, indice, cont, ocorrencia, atual;
 	int sequencia[MAX];
-	int termos;
-	printf("Insira o número inicial e a quantidade de sequêcias: ");
-	scanf("%d %d", &numero, &qtd_seq);
-	indice = 0;
-	sequencia[0] = numero;
-	while(indice < qtd_seq){
-		termos = 0;
-		for(cont = 0; sequencia[cont] != 0; cont++){
-			termos+= (sequencia[cont] == sequencia[cont+1])? 2: 1;
-			sequencia[cont+1] = sequencia[cont];
-			sequencia[cont] = termos;
+	int nova_sequencia[MAX];
+	
+	printf("Insira a quantidade de sequências: ");
+	scanf("%d", &qtd_seq);
+	
+	printf("Insira o tamanho da 1ª sequência: ");
+	scanf("%d", &tamanho_orig);
+	
+	for(indice = 0; indice < tamanho_orig; indice++){
+		printf("Insira %dº valor da sequência: ", indice + 1);
+		scanf("%d", &sequencia[indice]);
+	}
+	for(cont = 0; cont < qtd_seq; cont++){
+		for(indice = 0; indice < tamanho_orig; indice++)
+			printf("%d ", sequencia[indice]);
+		for(indice = 0, novo_tamanho = 0; indice < tamanho_orig; indice++){
+			atual = sequencia[indice];
+			ocorrencia = 0;
+			while(atual == sequencia[indice] && indice < tamanho_orig){
+				if(atual == sequencia[indice]){
+					ocorrencia++;
+					indice++;
+				}
+			}
+			indice--;
+			nova_sequencia[novo_tamanho++] = ocorrencia;
+			nova_sequencia[novo_tamanho++] = atual;
 		}
-		for(cont = 0; sequencia[cont] != 0; cont++)
-			printf("%d ", sequencia);
-		indice++;
+		printf("\n");
+		for(indice = 0; indice < novo_tamanho; indice++)
+			sequencia[indice] = nova_sequencia[indice];
+		tamanho_orig = novo_tamanho;
 	}
 	
 	
