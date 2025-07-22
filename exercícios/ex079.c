@@ -15,7 +15,6 @@ int main(){
 	fgets(segStr, TAM_STR, stdin);
 	
 	for(tam = 0; segStr[tam] != '\0' && segStr[tam] != '\n'; tam++);
-	//printf("%d", tam);
 	
 	for(indice = 0, achou = 0; primString[indice] && achou == 0; indice++){
 		for(cont = 0, ocorrencia = 0; cont < tam; cont++){
