@@ -1,22 +1,22 @@
 #include <stdio.h>
-#define TAM_STR 8
+#define TAM_STR 9
 #define QTD 5
 
 int main(){
-	char fitas[QTD][TAM_STR] = {"CGGATTTT",
+	char fitas[QTD][TAM_STR]; /*= {"CGGATTTT",
 								"CGGAAATT",
 								"GCGTTAAT", 
 								"GCGTTTTT", 
-								"ACGGACAT"};
+								"ACGGACAT"};*/
 	char consenso[TAM_STR];
 	int icont, jcont, kcont, repet, mais_rep;
 	char mais_oc, atual;
 	
-	/*for(icont = 0; icont < QTD; icont++){
+	for(icont = 0; icont < QTD; icont++){
 		printf("Insira as enzimas da %dª fita: ", icont + 1);
 		fgets(fitas[icont], TAM_STR, stdin);
 		fflush(stdin);
-	}*/
+	}
 	
 	for(jcont = 0; jcont < TAM_STR ; jcont++){
 		for(icont = 0, mais_rep = 0; icont < QTD; icont++){
@@ -35,7 +35,7 @@ int main(){
 		}
 		consenso[jcont] = mais_oc;
 	}
-	//consenso[jcont++] = '\0';
+	
 	puts(consenso);
 	
 	return 0;
