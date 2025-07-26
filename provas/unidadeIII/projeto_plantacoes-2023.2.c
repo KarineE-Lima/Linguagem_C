@@ -19,7 +19,7 @@ int main(){
 		fgets(parede[icont], C+1, stdin);
 	}*/
 	
-	for(kcont = 0; kcont < 9; kcont++){
+	for(kcont = 0; kcont < L; kcont++){
 		for(icont = 0; icont < L; icont++){
 			for(jcont = 0; jcont < C; jcont++){
 				if(parede[icont][jcont] == '.'){

@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <locale.h>
 #define DIM 4
-#define REDUZ 2
+#define PASSO 2
+#define REDUZ DIM/PASSO
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
@@ -23,8 +24,8 @@ int main(){
 		printf("\n");
 	}
 	
-	for(icont = 0, l = 0; icont < DIM; icont+= REDUZ, l++){
-		for(jcont = 0, c = 0; jcont < DIM; jcont+= REDUZ, c++){
+	for(icont = 0, l = 0; icont < DIM; icont+= PASSO, l++){
+		for(jcont = 0, c = 0; jcont < DIM; jcont+= PASSO, c++){
 			maior = imagem[icont][jcont];
 			for(kcont = 0; kcont < REDUZ; kcont++){
 				for(lcont = 0; lcont < REDUZ; lcont++){
