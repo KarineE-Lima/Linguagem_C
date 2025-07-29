@@ -2,12 +2,11 @@
 #define TAM_STR 256
 #define ALF 26
 
-
 int main(){
 	char string[TAM_STR];
 	char faixa[TAM_STR];
 	int letras[ALF];
-	int icont, jcont, atual, menor;
+	int icont, jcont;
 	
 	printf("Insira a string: ");
 	fgets(string, TAM_STR, stdin);
@@ -24,22 +23,18 @@ int main(){
 		}
 	}
 	
-	icont = 0;
-	jcont = 0;
-	while(icont < ALF){
+	for(icont = 0, jcont = 0; icont < ALF; icont++){
 		if(letras[icont] != 0){
 			faixa[jcont++] = icont + 'a';
 			faixa[jcont++] = ':';
 		}
 		while(letras[icont] != 0){
-			if(letras[icont] != 0)
-				icont++;
+			icont++;
 		}
 		if(letras[icont-1] != 0){
 			faixa[jcont++] = (icont - 1) + 'a';
 			faixa[jcont++] = ' ';
 		}
-		icont++;
 	}
 	faixa[jcont++] = '\0';
 	puts(faixa);

@@ -1,14 +1,13 @@
 #include <stdio.h>
-#define QTD_EX 9
+#define QTD_EX 8
 #define MAX 256
-#define TAM_EX 4
+#define TAM_EX 5
 
 int main(){
 	char expressao[MAX];
 	char letras[QTD_EX][TAM_EX] = {"ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"};
 	char numero[QTD_EX] = {'2', '3', '4', '5', '6', '7', '8', '9'};
 	int icont, jcont, kcont;
-	
 	
 	printf("Insira a expressão: ");
 	fgets(expressao, MAX, stdin);
