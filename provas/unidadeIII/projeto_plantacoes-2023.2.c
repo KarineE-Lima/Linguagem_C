@@ -1,6 +1,6 @@
 #include <stdio.h>
 #define L 9
-#define C 14
+#define C 15
 
 int main(){
 	char parede[L][C] = {".......o......", 
@@ -12,20 +12,23 @@ int main(){
 						 "..............", 
 						 ".....####.....", 
 						 ".............."};
-	int icont, jcont, kcont;
+	int icont, jcont, trocas;
 	
 	/*for(icont = 0; icont < L; icont++){
 		printf("Insira padrão da linha: ");
-		fgets(parede[icont], C+1, stdin);
+		fgets(parede[icont], C, stdin);
 	}*/
-	
-	for(kcont = 0; kcont < L; kcont++){
+	trocas = 1;
+	while(trocas > 0){
+		trocas = 0;
 		for(icont = 0; icont < L; icont++){
 			for(jcont = 0; jcont < C; jcont++){
 				if(parede[icont][jcont] == '.'){
 					if((parede[icont - 1][jcont] == 'o') || (parede[icont][jcont-1] == 'o' && parede[icont + 1][jcont - 1] == '#') 
-					|| (parede[icont][jcont + 1] == 'o' && parede[icont + 1][jcont + 1] == '#'))
+					|| (parede[icont][jcont + 1] == 'o' && parede[icont + 1][jcont + 1] == '#')){
 						parede[icont][jcont] = 'o';
+						trocas++;
+					}
 				}
 			}
 		}
