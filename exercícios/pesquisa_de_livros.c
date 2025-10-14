@@ -2,13 +2,11 @@
 #define MAX 30
 #define QTD 5
 
-struct tipo_livro{
+typedef struct tipo_livro{
 	char titulo[MAX];
 	char autor[MAX/2];
 	int ano;
-};
-
-typedef struct tipo_livro tipo_livro;
+}tipo_livro;
 
 int main(){
 	

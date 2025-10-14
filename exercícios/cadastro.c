@@ -2,24 +2,18 @@
 #define QTD 2
 #define MAX 100
 
-struct tipo_ender{
-	char rua[MAX];
-	char bairro[MAX];
-	char cidade[MAX];
-	char estado[MAX];
+typedef struct tipo_ender{
+	char rua[MAX], bairro[MAX], cidade[MAX], estado[MAX];
 	int cep;
-};
-typedef struct tipo_ender tipo_ender;
-struct tipo_cadastro{
-	char nome[MAX];
+} tipo_ender;
+
+typedef struct tipo_cadastro{
+	char nome[MAX], estado_civil[MAX], telefone[MAX], sexo[MAX];
 	tipo_ender endereco;
 	float salario;
 	int identidade, cpf, idade;
-	char estado_civil[MAX];
-	char telefone[MAX];
-	char sexo[MAX];
-};
-typedef struct tipo_cadastro tipo_cadastro;
+} tipo_cadastro;
+
 
 int main(){
 	tipo_cadastro cadastro[QTD];
@@ -27,7 +21,7 @@ int main(){
 	char genero[MAX] = "masculino";
 	
 	for(icont = 0; icont < QTD; icont++){
-		printf("------------CADASTRO %d-----------------", icont+1);
+		printf("------------CADASTRO %d-----------------\n", icont+1);
 		printf("Insira o seu nome: ");
 		fgets(cadastro[icont].nome, MAX, stdin);
 		fflush(stdin);
@@ -113,3 +107,4 @@ int main(){
 	}
 	return 0;
 }
+
