@@ -6,6 +6,7 @@ typedef struct No
     int dado;
     struct No *esq;
     struct No *dir;
+    int altura;
 }No;
 
 No* criarNo(int dado)
@@ -14,15 +15,18 @@ No* criarNo(int dado)
     novo->dado = dado;
     novo->esq = NULL;
     novo->dir = NULL;
+    novo->altura = 0;
     return novo;
+}
+int maior(int a, int b)
+{
+    return a > b ? a : b;
 }
 int altura(No* n)
 {
     if(n == NULL)
-        return 0;
-    int altEsq = altura(n->esq);
-    int altDir = altura(n->dir);
-    return 1 + ((altEsq > altDir) ? altEsq : altDir);
+        return -1;
+    return n->altura;
 }
 int ObterFB(No* n)
 {
@@ -37,6 +41,8 @@ No *rotacionaDir(No *n)
     //rotação
     esq->dir = n; // a raiz agora vai ser filho do pivo
     n->esq = filhodir;
+    n->altura = maior(altura(n->esq), altura(n->dir)) + 1;
+    esq->altura = maior(altura(esq->esq), altura(esq->dir)) + 1;
     return esq;
 }
 No *rotacionaEsq(No *n)
@@ -47,7 +53,19 @@ No *rotacionaEsq(No *n)
     //rotação
     dir->esq = n; // a raiz agora vai ser filho do pivo
     n->dir = filhoesq;
+    n->altura = maior(altura(n->esq), altura(n->dir)) + 1;
+    dir->altura = maior(altura(dir->esq), altura(dir->dir)) + 1;
     return dir;
+}
+No *rotacionaEsqDir(No* n)
+{
+    n->esq = rotacionaEsq(n->esq);
+    return rotacionaDir(n);
+}
+No *rotacionaDirEsq(No* n)
+{
+    n->dir = rotacionaDir(n->dir);
+    return rotacionaEsq(n);
 }
 No *balancear(No *no)
 {
@@ -61,13 +79,12 @@ No *balancear(No *no)
     // esquerda - direita
     if (fb > 1 && ObterFB(no->esq) < 0)
     {
-        no->esq = rotacionaEsq(no->esq);
-        return rotacionaDir(no);
+
+        no = rotacionaEsqDir(no);
     }
     if (fb < -1 && ObterFB(no->dir) > 0)
     {
-        no->dir = rotacionaDir(no->dir);
-        return rotacionaEsq(no);
+        no = rotacionaDirEsq(no);
     }
     return no;
 }
@@ -79,7 +96,10 @@ No *Inserir(No *raiz, int dado)
         raiz->esq = Inserir(raiz->esq, dado);
     else if (dado > raiz->dado)
         raiz->dir = Inserir(raiz->dir, dado);
-    return balancear(raiz);
+
+    raiz->altura = maior(altura(raiz->esq), altura(raiz->dir)) + 1;
+    raiz = balancear(raiz);
+    return raiz;
 }
 
 void ExibirIn_Ordem(No *raiz)
@@ -132,23 +152,38 @@ No *Remover(No *raiz, int dado)
     return raiz;
 }
 
+void imprimir(No *raiz, int nivel)
+{
+    int i;
+    if(raiz != NULL)
+    {
+        imprimir(raiz->dir, nivel + 1);
+        printf("\n\n");
+        for(i = 0; i < nivel; i++)
+            printf("\t");
+        printf("| %d | ", raiz->dado);
+        imprimir(raiz->esq, nivel + 1);
+    }
+}
+
 int main()
 {
     No *raiz = NULL;
     raiz = Inserir(raiz, 50);
-    Inserir(raiz, 30);
-    Inserir(raiz, 20);
-    Inserir(raiz, 40);
-    Inserir(raiz, 70);
-    Inserir(raiz, 60);
-    Inserir(raiz, 80);
-    ExibirIn_Ordem(raiz);
-    Inserir(raiz, 10);
-    Inserir(raiz, 9);
+    raiz = Inserir(raiz, 30);
+    raiz = Inserir(raiz, 20);
+    raiz = Inserir(raiz, 40);
+    raiz = Inserir(raiz, 70);
+    raiz = Inserir(raiz, 60);
+    raiz = Inserir(raiz, 80);
+    //ExibirIn_Ordem(raiz);
+    raiz = Inserir(raiz, 10);
+    raiz = Inserir(raiz, 9);
     //Remover(raiz, 80);
-    printf("\n\n");
-    ExibirIn_Ordem(raiz);
-    printf("\n %d", altura(raiz));
+    //printf("\n\n");
+    //ExibirIn_Ordem(raiz);
+    //printf("\n %d", ObterFB(raiz->esq));
+    imprimir(raiz, 1);
 
 
 }
